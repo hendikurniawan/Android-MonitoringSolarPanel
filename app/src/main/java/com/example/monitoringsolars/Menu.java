@@ -4,10 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class Menu extends AppCompatActivity {
+    ImageView GambarGif;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +23,18 @@ public class Menu extends AppCompatActivity {
 
         getSupportActionBar().hide();
         ButterKnife.bind(this);
+
+        // TAMBAHKAN INI
+        GambarGif = (ImageView)findViewById(R.id.logo);
+
+        Glide.with(Menu.this)
+                // LOAD URL DARI LOKAL DRAWABLE
+                .load(R.drawable.giff)
+                .asGif()
+                //PENGATURAN CACHE
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .into(GambarGif);
+
     }
 
     @OnClick(R.id.btnHistory)
@@ -35,7 +54,14 @@ public class Menu extends AppCompatActivity {
 
     @OnClick(R.id.btnChart)
     void btnChart() {
-        Intent b = new Intent(Menu.this, MainActivity.class);
+        Intent b = new Intent(Menu.this, Graph.class);
+        startActivity(b);
+        finish();
+    }
+
+    @OnClick(R.id.btnControl)
+    void btnControl() {
+        Intent b = new Intent(Menu.this, Control.class);
         startActivity(b);
         finish();
     }

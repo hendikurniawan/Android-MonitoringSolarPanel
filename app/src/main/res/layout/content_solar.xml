@@ -14,70 +14,70 @@
         android:id="@+id/linearKotak"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:orientation="horizontal">-->
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Temperature"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Temperature"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": 0"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:id="@+id/txtSuhu"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=": 0"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:id="@+id/txtSuhu"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" 'C"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=" 'C"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textStyle="bold" />-->
+        <!--</LinearLayout>-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:orientation="horizontal">-->
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Humidity"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Humidity"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": 0"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:id="@+id/txtKelembaban"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=": 0"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:id="@+id/txtKelembaban"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" %"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=" %"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textStyle="bold" />-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -178,38 +178,38 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:orientation="horizontal">-->
 
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="Kw/H"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Kw/H"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=": 0"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:id="@+id/txtkwh"
-                android:textStyle="bold" />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=": 0"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:id="@+id/txtkwh"-->
+                <!--android:textStyle="bold" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" kw/h"
-                android:textSize="15dp"
-                android:textColor="@color/gray"
-                android:textStyle="bold" />
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=" kw/h"-->
+                <!--android:textSize="15dp"-->
+                <!--android:textColor="@color/gray"-->
+                <!--android:textStyle="bold" />-->
+        <!--</LinearLayout>-->
 
         <LinearLayout
             android:layout_width="match_parent"

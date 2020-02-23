@@ -3,6 +3,7 @@ package com.example.monitoringsolars;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.monitoringsolars.data.DataSolars;
 import com.example.monitoringsolars.server.Config_URL;
+import android.support.v4.widget.SwipeRefreshLayout;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,6 +28,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MonitorData extends AppCompatActivity {
+    private  SwipeRefreshLayout swLayout;
 
     TextView suhus, kelembabans, tanggals, voltages, amperes, watts, hertzs;
     ProgressDialog pDialog;
@@ -42,8 +45,8 @@ public class MonitorData extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-        suhus = (TextView) findViewById(R.id.txtSuhu);
-        kelembabans = (TextView) findViewById(R.id.txtKelembaban);
+//        suhus = (TextView) findViewById(R.id.txtSuhu);
+//        kelembabans = (TextView) findViewById(R.id.txtKelembaban);
         tanggals = (TextView) findViewById(R.id.txtTanggal);
         voltages = (TextView) findViewById(R.id.txtVoltage);
         amperes = (TextView) findViewById(R.id.txtAmpere);
@@ -51,6 +54,27 @@ public class MonitorData extends AppCompatActivity {
         hertzs = (TextView) findViewById(R.id.txtHertz);
 
         getData();
+
+        swLayout = (SwipeRefreshLayout)findViewById(R.id.swlayout);
+        swLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swLayout.setRefreshing(false);
+
+                        Intent intent = new Intent(MonitorData.this, MonitorData.class);
+                        startActivity(intent);
+
+                        //llayout = startActivity(new Intent(this, DataRealTime.class));
+                        //llayout = new ArrayAdapter<String>(DataRealTime.this, R.layout.activity_data_real_time);
+                    }
+                }, 2000);
+
+            }
+        });
     }
 
     private void getData() {
@@ -72,40 +96,44 @@ public class MonitorData extends AppCompatActivity {
                         hideDialog();
                         try {
                             JSONObject jObj = new JSONObject(response);
+//                            Log.d("Response = ", response.toString());
                             boolean status = jObj.getBoolean("success");
 
                             if (status == true) {
 
-                                String getObject = jObj.getString("message");
-                                JSONArray jsonArray = new JSONArray(getObject);
+                                String getObject = jObj.getString("results");
+//                                String getObjects = jObj.getString("tanggal");
+                                JSONObject jsonObject = new JSONObject(getObject);
+//                                JSONObject jsonObjects = new JSONObject(getObjects);
 
-                                for (int i = 0; i < jsonArray.length(); i++) {
-                                    final JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                                for (int i = 0; i < jsonArray.length(); i++) {
+//                                    final JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                                    String dataSuhu = jsonObject.getString("suhu");
-                                    String dataKelem = jsonObject.getString("kelembaban");
-                                    String dataVolt = jsonObject.getString("volt");
-                                    String dataAmper = jsonObject.getString("amper");
-                                    String dataWatt = jsonObject.getString("watt");
-                                    String dataHertz = jsonObject.getString("hertz");
-//                                String dataTgl = jsonObject.getString("tanggal");
+//                                    String dataSuhu = jsonObject.getString("suhu");
+//                                    String dataKelem = jsonObject.getString("kelembaban");
+//                                    String dataVolt = jsonObject.getString("volt");
+//                                    String dataAmper = jsonObject.getString("amper");
+//                                    String dataWatt = jsonObject.getString("watt");
+//                                    String dataHertz = jsonObject.getString("hertz");
+//                                String dataTgl = jsonObject.getString("tgl_update");
 
-                                    JSONObject suhu = new JSONObject(dataSuhu);
-                                    JSONObject kelem = new JSONObject(dataKelem);
-                                    JSONObject volt = new JSONObject(dataVolt);
-                                    JSONObject amper = new JSONObject(dataAmper);
-                                    JSONObject watt = new JSONObject(dataWatt);
-                                    JSONObject hertz = new JSONObject(dataHertz);
+//                                    JSONObject suhu = new JSONObject(dataSuhu);
+//                                    JSONObject kelem = new JSONObject(dataKelem);
+//                                    JSONObject volt = new JSONObject(dataVolt);
+//                                    JSONObject amper = new JSONObject(dataAmper);
+//                                    JSONObject watt = new JSONObject(dataWatt);
+//                                    JSONObject hertz = new JSONObject(dataHertz);
 //                                JSONObject tgl = new JSONObject(dataTgl);
 
-                                    suhus.setText(suhu.getString("data"));
-                                    kelembabans.setText(kelem.getString("data"));
-                                    voltages.setText(volt.getString("data"));
-                                    amperes.setText(amper.getString("data"));
-                                    watts.setText(watt.getString("data"));
-                                    hertzs.setText(hertz.getString("data"));
-                                    tanggals.setText(jsonObject.getString("tanggal"));
-                                }
+//                                    suhus.setText(jsonObject.getString("suhu"));
+//                                    kelembabans.setText(jsonObject.getString("kelembaban"));
+                                    voltages.setText(jsonObject.getString("volt"));
+                                    amperes.setText(jsonObject.getString("amper"));
+                                    watts.setText(jsonObject.getString("watt"));
+                                    hertzs.setText(jsonObject.getString("hertz"));
+                                    tanggals.setText(jObj.getString("terakhir update"));
+
+//                                  tanggals.setText(jsonObjects.getString("date").replace(".000000", ""));
                             }
 
                         } catch (JSONException e) {
@@ -142,10 +170,9 @@ public class MonitorData extends AppCompatActivity {
         finish();
     }
 
-    @OnClick(R.id.btnRefresh)
-    void btnRefresh() {
-        Intent a = new Intent(MonitorData.this, MonitorData.class);
-        startActivity(a);
-        finish();
+//    @OnClick(R.id.btnRefresh)
+//    void btnRefresh() {
+//        Intent a = new Intent(MonitorData.this, MonitorData.class);
+//        startActivity(a);
+//        finish();
     }
-}

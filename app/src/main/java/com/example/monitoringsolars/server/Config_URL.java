@@ -4,10 +4,12 @@ package com.example.monitoringsolars.server;
 
 public class Config_URL
 {
-    public static String base_URL           = "http://192.168.43.5:5600";
+    public static String base_URL           = "http://system.solarmeter.id";
+//    public static String base_URL           = "http://172.32.1.128:9000";
+
 
     //api yang di get dari ip dan nganu
-    public static String dataHistori           = base_URL + "/api/getHistori";
-    public static String dataRealtime          = base_URL + "/api/getRealtime";
+    public static String dataHistory           = base_URL + "/sensors/datahistory";
+    public static String dataRealtime          = base_URL + "/sensors/datarealtime";
 
 }

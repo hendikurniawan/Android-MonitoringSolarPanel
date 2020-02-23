@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
             android:gravity="center"
-            android:text="Solar Cell Monitoring"
+            android:text="Electric Monitoring"
             android:textColor="#4BA5CC"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -39,7 +39,8 @@
         <ImageView
             android:layout_width="200dp"
             android:layout_height="150dp"
-            android:src="@drawable/ecofriendly" />
+            android:id="@+id/logo"
+            android:src="@drawable/giff" />
 
 
     </LinearLayout>
@@ -101,6 +102,26 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_rounded_green"
             android:text="Chart"
+            android:textAllCaps="false"
+            android:textColor="#FFF"
+            android:textSize="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/btnControl"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_rounded_green"
+            android:text="Control"
             android:textAllCaps="false"
             android:textColor="#FFF"
             android:textSize="15dp" />

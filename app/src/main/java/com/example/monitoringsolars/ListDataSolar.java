@@ -3,6 +3,7 @@ package com.example.monitoringsolars;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+
+import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -41,6 +44,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ListDataSolar extends AppCompatActivity {
+
+    private SwipeRefreshLayout swLayout;
 
     ListView list;
 
@@ -76,6 +81,27 @@ public class ListDataSolar extends AppCompatActivity {
 
         getDataSuhu();
         searchData();
+
+        swLayout = (SwipeRefreshLayout)findViewById(R.id.swlayout);
+        swLayout.setColorSchemeResources(R.color.kolor1, R.color.kolor2, R.color.kolor3);
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swLayout.setRefreshing(false);
+
+                        Intent intent = new Intent(ListDataSolar.this, ListDataSolar.class);
+                        startActivity(intent);
+
+                        //llayout = startActivity(new Intent(this, DataRealTime.class));
+                        //llayout = new ArrayAdapter<String>(DataRealTime.this, R.layout.activity_data_real_time);
+                    }
+                }, 2000);
+
+            }
+        });
     }
 
     // Fungsi get JSON Data
@@ -84,9 +110,9 @@ public class ListDataSolar extends AppCompatActivity {
         pDialog.setMessage("Loading.....");
         showDialog();
 
-        String tag_json_obj = "json_obj_req";
+        final String tag_json_obj = "json_obj_req";
         StringRequest strReq = new StringRequest(Request.Method.GET,
-                Config_URL.dataHistori,
+                Config_URL.dataHistory,
                 new Response.Listener<String>() {
 
                     @Override
@@ -100,7 +126,7 @@ public class ListDataSolar extends AppCompatActivity {
 
                             if(status == true){
 
-                                String getObject = jObj.getString("message");
+                                String getObject = jObj.getString("results");
                                 JSONArray jsonArray = new JSONArray(getObject);
 
                                 for (int i = 0; i < jsonArray.length(); i++) {
