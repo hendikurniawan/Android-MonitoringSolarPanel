@@ -30,7 +30,7 @@ import butterknife.OnClick;
 public class MonitorData extends AppCompatActivity {
     private  SwipeRefreshLayout swLayout;
 
-    TextView suhus, kelembabans, tanggals, voltages, amperes, watts, hertzs;
+    TextView suhus, kelembabans, tanggals, voltages, amperes, watts, hertzs, kwh, tarif;
     ProgressDialog pDialog;
 
 
@@ -45,18 +45,21 @@ public class MonitorData extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
-//        suhus = (TextView) findViewById(R.id.txtSuhu);
-//        kelembabans = (TextView) findViewById(R.id.txtKelembaban);
+        suhus = (TextView) findViewById(R.id.txtSuhu);
+        kelembabans = (TextView) findViewById(R.id.txtKelembaban);
         tanggals = (TextView) findViewById(R.id.txtTanggal);
         voltages = (TextView) findViewById(R.id.txtVoltage);
         amperes = (TextView) findViewById(R.id.txtAmpere);
         watts = (TextView) findViewById(R.id.txtWatt);
         hertzs = (TextView) findViewById(R.id.txtHertz);
 
+        kwh = (TextView) findViewById(R.id.txtkWh);
+        tarif = (TextView) findViewById(R.id.txtTarif);
+
         getData();
 
         swLayout = (SwipeRefreshLayout)findViewById(R.id.swlayout);
-        swLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary);
+        swLayout.setColorSchemeResources(R.color.blueset3);
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -71,7 +74,7 @@ public class MonitorData extends AppCompatActivity {
                         //llayout = startActivity(new Intent(this, DataRealTime.class));
                         //llayout = new ArrayAdapter<String>(DataRealTime.this, R.layout.activity_data_real_time);
                     }
-                }, 2000);
+                }, 1000);
 
             }
         });
@@ -88,7 +91,7 @@ public class MonitorData extends AppCompatActivity {
         final String requestBody = jsonBody.toString();
 
         // Request a string response from the provided URL.
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config_URL.dataRealtime,
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Config_URL.dataTarif,
                 new Response.Listener<String>() {
 
                     @Override
@@ -125,13 +128,16 @@ public class MonitorData extends AppCompatActivity {
 //                                    JSONObject hertz = new JSONObject(dataHertz);
 //                                JSONObject tgl = new JSONObject(dataTgl);
 
-//                                    suhus.setText(jsonObject.getString("suhu"));
-//                                    kelembabans.setText(jsonObject.getString("kelembaban"));
+                                    suhus.setText(jsonObject.getString("suhu"));
+                                    kelembabans.setText(jsonObject.getString("kelembaban"));
                                     voltages.setText(jsonObject.getString("volt"));
                                     amperes.setText(jsonObject.getString("amper"));
                                     watts.setText(jsonObject.getString("watt"));
                                     hertzs.setText(jsonObject.getString("hertz"));
-                                    tanggals.setText(jObj.getString("terakhir update"));
+                                    kwh.setText(jsonObject.getString("kwh"));
+
+                                    tanggals.setText(jObj.getString("trahirupdate"));
+                                    tarif.setText(jObj.getString("totarif2"));
 
 //                                  tanggals.setText(jsonObjects.getString("date").replace(".000000", ""));
                             }
@@ -170,9 +176,4 @@ public class MonitorData extends AppCompatActivity {
         finish();
     }
 
-//    @OnClick(R.id.btnRefresh)
-//    void btnRefresh() {
-//        Intent a = new Intent(MonitorData.this, MonitorData.class);
-//        startActivity(a);
-//        finish();
     }

@@ -12,12 +12,13 @@
         android:roundIcon="@drawable/energy"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Control"></activity>
+        <activity android:name=".RippleEffects"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".Register" />
+        <activity android:name=".Control" />
         <activity android:name=".Menu" />
         <activity android:name=".MonitorData" />
         <activity android:name=".Graph" />
-        <activity android:name=".MonitorDatas" />
-        <activity android:name=".MainActivity" />
         <activity android:name=".ListDataSolar" />
         <activity android:name=".SplashScreen">
             <intent-filter>

@@ -24,7 +24,7 @@ public class Graph extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         swLayout = (SwipeRefreshLayout)findViewById(R.id.swlayout);
-        swLayout.setColorSchemeResources(R.color.kolor1, R.color.kolor2, R.color.kolor3);
+        swLayout.setColorSchemeResources(R.color.blueset3);
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -39,7 +39,7 @@ public class Graph extends AppCompatActivity {
                         //llayout = startActivity(new Intent(this, DataRealTime.class));
                         //llayout = new ArrayAdapter<String>(DataRealTime.this, R.layout.activity_data_real_time);
                     }
-                }, 2000);
+                }, 1000);
 
             }
         });

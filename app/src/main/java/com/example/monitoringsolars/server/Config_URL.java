@@ -11,5 +11,6 @@ public class Config_URL
     //api yang di get dari ip dan nganu
     public static String dataHistory           = base_URL + "/sensors/datahistory";
     public static String dataRealtime          = base_URL + "/sensors/datarealtime";
+    public static String dataTarif             = base_URL + "/sensors/totalkwh";
 
 }

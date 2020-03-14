@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
     tools:context=".Menu">
 
     <LinearLayout
@@ -23,7 +25,7 @@
             android:gravity="center"
             android:text="Electric Monitoring"
             android:textColor="#4BA5CC"
-            android:textSize="25sp"
+            android:textSize="30dp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -32,6 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -41,91 +44,183 @@
             android:layout_height="150dp"
             android:id="@+id/logo"
             android:src="@drawable/giff" />
-
-
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp">
-
-        <Button
+    <android.support.v7.widget.CardView
             android:id="@+id/btnTemHum"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_rounded_green"
-            android:text="Realtime Data"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="15dp" />
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="3dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+            <LinearLayout
+                android:background="@drawable/btn_lined"
+                android:layout_width="300dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:padding="5dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/monitorings"/>
+                <LinearLayout
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:gravity="center"
+                        android:textColor="#2196F3"
+                        android:textStyle="bold"
+                        android:textSize="15dp"
+                        android:padding="5dp"
+                        android:text="Monitoring"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnHistory"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp">
 
-        <Button
-            android:id="@+id/btnHistory"
-            style="?android:attr/borderlessButtonStyle"
+        <LinearLayout
+            android:background="@drawable/btn_lined"
             android:layout_width="300dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_rounded_blue"
-            android:text="History"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="15dp" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="50dp"
+                android:padding="5dp"
+                android:layout_height="50dp"
+                android:src="@drawable/historys"/>
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:textColor="#2196F3"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:padding="5dp"
+                    android:text="History"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnChart"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp">
 
-        <Button
-            android:id="@+id/btnChart"
-            style="?android:attr/borderlessButtonStyle"
+        <LinearLayout
+            android:background="@drawable/btn_lined"
             android:layout_width="300dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_rounded_green"
-            android:text="Chart"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="15dp" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+            <ImageView
+                android:layout_width="50dp"
+                android:padding="5dp"
+                android:layout_height="50dp"
+                android:src="@drawable/charts"/>
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:textColor="#2196F3"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:padding="5dp"
+                    android:text="Chart"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/btnControl"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:layout_gravity="center"
+        android:layout_marginBottom="15dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp">
 
-        <Button
-            android:id="@+id/btnControl"
-            style="?android:attr/borderlessButtonStyle"
+        <LinearLayout
+            android:background="@drawable/btn_lined"
             android:layout_width="300dp"
+            android:gravity="center"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_rounded_green"
-            android:text="Control"
-            android:textAllCaps="false"
-            android:textColor="#FFF"
-            android:textSize="15dp" />
-    </LinearLayout>
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:padding="5dp"
+                android:layout_height="50dp"
+                android:src="@drawable/controls"/>
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:gravity="center"
+                    android:textColor="#2196F3"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:padding="5dp"
+                    android:text="Control"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -145,5 +240,4 @@
             android:textSize="20dp"
             android:textStyle="bold" />
     </LinearLayout>
-
-</LinearLayout>
+    </LinearLayout>

@@ -17,6 +17,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.android.volley.AuthFailureError;
@@ -45,6 +48,8 @@ import butterknife.ButterKnife;
 
 public class ListDataSolar extends AppCompatActivity {
 
+    ImageView GambarGif;
+
     private SwipeRefreshLayout swLayout;
 
     ListView list;
@@ -70,6 +75,16 @@ public class ListDataSolar extends AppCompatActivity {
         getSupportActionBar().hide();//hide action bar
         ButterKnife.bind(this);//buat button backnya
 
+        GambarGif = (ImageView)findViewById(R.id.logo);
+
+        Glide.with(ListDataSolar.this)
+                // LOAD URL DARI LOKAL DRAWABLE
+                .load(R.drawable.giff)
+                .asGif()
+                //PENGATURAN CACHE
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .into(GambarGif);
+
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         list = (ListView) findViewById(R.id.array_list);
@@ -83,7 +98,7 @@ public class ListDataSolar extends AppCompatActivity {
         searchData();
 
         swLayout = (SwipeRefreshLayout)findViewById(R.id.swlayout);
-        swLayout.setColorSchemeResources(R.color.kolor1, R.color.kolor2, R.color.kolor3);
+        swLayout.setColorSchemeResources(R.color.blueset3);
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -98,7 +113,7 @@ public class ListDataSolar extends AppCompatActivity {
                         //llayout = startActivity(new Intent(this, DataRealTime.class));
                         //llayout = new ArrayAdapter<String>(DataRealTime.this, R.layout.activity_data_real_time);
                     }
-                }, 2000);
+                }, 1000);
 
             }
         });
